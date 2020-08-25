@@ -1,0 +1,25 @@
+{
+  "name": "meeting-bot",
+  "version": "1.0.0",
+  "description": "discord bot for polling weeklt meeting times",
+  "main": "index.js",
+  "scripts": {
+    "test": "meetbot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arch-s/meeting-bot.git"
+  },
+  "keywords": [
+    "discord"
+  ],
+  "author": "arch-s",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arch-s/meeting-bot/issues"
+  },
+  "homepage": "https://github.com/arch-s/meeting-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
