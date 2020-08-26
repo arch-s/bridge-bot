@@ -12,8 +12,13 @@ module.exports = {
         }
         const msg = [];
         let msgItem = args.shift().slice(1);
+        if (msgItem.endsWith('}')) {
+            msgItem = msgItem.slice(0, -1);
+            msg.push(msgItem);
+        }
         let inOption = false;
         let optionNum = 0;
+
         while(args.length) {
             if (args[0].endsWith('}')) {
                 msgItem += " " + args.shift().slice(0, -1);
@@ -23,8 +28,16 @@ module.exports = {
                 if (inOption) {
                     return message.channel.send(`Error: a poll option contains another option`);
                 }
-                msgItem = "\n" + emoji[optionNum] + " " + args.shift().slice(1);
-                inOption = true;
+                if (args[0].endsWith(']')) {
+                    msgItem = "\n" + emoji[optionNum] + " " + args.shift().slice(1, -1);
+                    msg.push(msgItem);
+                    optionNum++;
+                    inOption = false;
+                }
+                else {
+                    msgItem = "\n" + emoji[optionNum] + " " + args.shift().slice(1);
+                    inOption = true;
+                }
             }
             else if (args[0].endsWith(']')) {
                 if (!inOption) {
