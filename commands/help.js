@@ -1,10 +1,10 @@
 const {prefix} = require('../config.json');
 
 module.exports = {
-    name = 'help',
-    description = 'List all of bridge-bot\'s commands or info about a specific command',
-    aliases: ['commands'],
-    usage: '[command name]',
+    name: 'help',
+    description: 'List all of bridge-bot\'s commands or info about a specific command',
+    aliases: ['commands', 'h'],
+    usage: `command_name\``,
     execute(message, args) {
         const data = [];
         const {commands} = message.client;
@@ -24,10 +24,10 @@ module.exports = {
             return message.reply('error: command not found');
         }
 
-        data.push(`**Name: ${command.name}`);
+        data.push(`**Name:** ${command.name}`);
         if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(',')}`);
         if (command.decription) data.push(`**Description:** ${command.description}`);
-        if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+        if (command.usage) data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}`);
 
         message.channel.send(data, {split: true});
     }

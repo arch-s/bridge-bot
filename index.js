@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const {prefix, day} = require('./config.json');
-const token = require('./token.json');
+const {token} = require('./token.json');
 
 const client = new Discord.Client();
 
@@ -29,7 +29,7 @@ client.on('message', message => {
     if (!command) return;
 
     if (command.args && !args.length) {
-        let reply = `You didn't provide any arguments, ${message.author}!`;
+        let reply = `No arguments provided`;
         if (command.usage) {
             reply += `\nThe command format is: \`${prefix}${command.name} ${command.usage}\``;
         }
