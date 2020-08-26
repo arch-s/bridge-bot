@@ -1,21 +1,20 @@
-const { prefix } = require('../config.json');
-const { MessageFlags } = require('discord.js');
+const {prefix} = require('../config.json');
 
 module.exports = {
     name = 'help',
-    description = 'List all of bridge-bots commands or info about a specific command',
+    description = 'List all of bridge-bot\'s commands or info about a specific command',
     aliases: ['commands'],
     usage: '[command name]',
     execute(message, args) {
         const data = [];
-        const { commands } = message.client;
+        const {commands} = message.client;
 
         if (!args.length) {
             data.push('Here\'s a list of all my commands:');
             data.push(commands.map(command => command.name).join('\n'));
             data.push(`\nUse \`${prefix}help [command name]\` to get info on a specific command`);
 
-            return message.channel.send(data, { split:true });
+            return message.channel.send(data, {split:true});
         }
 
         const name = args[0].toLowerCase();

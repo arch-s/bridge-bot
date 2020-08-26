@@ -1,5 +1,3 @@
-const { ClientVoiceManager } = require("discord.js");
-
 module.exports = {
     name: 'reload',
     aliases: ['refresh'],
