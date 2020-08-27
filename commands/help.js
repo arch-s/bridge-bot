@@ -4,7 +4,7 @@ module.exports = {
     name: 'help',
     description: 'List all of bridge-bot\'s commands or info about a specific command',
     aliases: ['commands', 'h'],
-    usage: `command_name\``,
+    usage: `<command_name>\``,
     execute(message, args) {
         const data = [];
         const {commands} = message.client;
@@ -12,7 +12,8 @@ module.exports = {
         if (!args.length) {
             data.push('Here\'s a list of all my commands:');
             data.push(commands.map(command => command.name).join('\n'));
-            data.push(`\nUse \`${prefix}help [command name]\` to get info on a specific command`);
+            data.push(`\nUse \`${prefix}help command_name\` to get info on a specific command.` +
+                        ` Arguments shown between \`<>\` are optional`);
 
             return message.channel.send(data, {split:true});
         }
@@ -26,7 +27,7 @@ module.exports = {
 
         data.push(`**Name:** ${command.name}`);
         if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(',')}`);
-        if (command.decription) data.push(`**Description:** ${command.description}`);
+        if (command.description) data.push(`**Description:** ${command.description}`);
         if (command.usage) data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}`);
 
         message.channel.send(data, {split: true});
