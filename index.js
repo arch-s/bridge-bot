@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const {prefix, day} = require('./config.json');
-const {token} = require('./token.json');
+const {token, bruh, reaction} = require('./private.json');
 
 const client = new Discord.Client();
 
@@ -19,7 +19,11 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix) || message.author.bot) {
+        if (message.author.tag === bruh) {
+            return (Math.random() < 0.2 ? message.react(reaction) : 0);
+        }
+    }
     
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
@@ -41,7 +45,7 @@ client.on('message', message => {
     }
     catch (error) {
         console.error(error);
-        message.reply('there was an error trying to execute that command')
+        message.channel.send('there was an error trying to execute that command')
     }
 });
 

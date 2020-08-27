@@ -1,5 +1,3 @@
-const {prefix} = require('../config.json');
-
 module.exports = {
     name: 'reload',
     aliases: ['refresh', 'r'],
@@ -8,7 +6,7 @@ module.exports = {
     execute(message, args) {
         if (!args.length) return message.channel.send(`No command passed to reload`);
         const commandName = args[0].toLowerCase();
-        const command = messsage.client.commands.get(commandName)
+        const command = message.client.commands.get(commandName)
             || message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         if (!command) return message.channel.send(`Command ${commandName} not found with that name or alias`)
         
