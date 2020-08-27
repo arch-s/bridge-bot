@@ -11,7 +11,8 @@ module.exports = {
     execute(message, args) {
         const msg = [];
         let total = 0;
-        let [rolls, dice] = args[0].split('d');
+        let [rolls, dice] = args[0].split('d').map(val => parseInt(val));
+        
         if (!dice) return message.channel.send(`Error: argument not formatted correctly.` + 
                                                 ` Use \`\${number_of_rolls}d\${dice_size}\``);
         if (rolls == 1) msg.push(`Rolling d${dice}:\n`)
@@ -22,6 +23,12 @@ module.exports = {
             msg.push(result);
         }
         if (!(rolls == 1)) msg.push(`\n Total: ${total}`);
-        return message.channel.send(msg);
+        try {
+            return message.channel.send(msg);
+        }
+        catch (error) {
+            console.error(error);
+            message.channel.send('there was an error trying to execute that command');
+        }
     },
 };

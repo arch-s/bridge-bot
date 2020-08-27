@@ -1,4 +1,6 @@
 const SpotifyAPI = require('spotify-web-api-node');
+const {spotify_secret, spotify_id, redirect} = require('../private.json');
+const spotify = new SpotifyAPI();
 
 module.exports = {
     name: 'music',

@@ -13,7 +13,7 @@ module.exports = {
         const msg = [];
         let msgItem = `Poll: ${args.shift().slice(1)}`;
         if (msgItem.endsWith('}')) {
-            msgItem = `Poll: ${msgItem.slice(0, -1)}\n`;
+            msgItem = `${msgItem.slice(0, -1)}\n`;
             msg.push(msgItem);
         }
         let inOption = false;

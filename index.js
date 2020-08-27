@@ -21,8 +21,9 @@ client.once('ready', () => {
 client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
         if (message.author.tag === bruh) {
-            return (Math.random() < 0.2 ? message.react(reaction) : 0);
+            return (Math.random() < 0.01 ? message.react(reaction) : 0);
         }
+        return;
     }
     
     const args = message.content.slice(prefix.length).trim().split(/ +/);
