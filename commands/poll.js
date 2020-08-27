@@ -1,4 +1,4 @@
-const emoji = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫', '🇬', '🇭', '🇮', '🇯', '🇰', '🇱', '🇲', '🇳', '🇴', '🇵', '🇶', '🇷', '🇸', '🇹', '🇺', '🇻', '🇼', '🇽', '🇾', '🇿'];
+const emoji = ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫', '🇬', '🇭', '🇮', '🇯', '🇰', '🇱', '🇲', '🇳', '🇴', '🇵', '🇶', '🇷', '🇸', '🇹'];
 
 module.exports = {
     name: 'poll',
@@ -11,17 +11,17 @@ module.exports = {
             return message.channel.send(`Error: poll title is not within {}`);
         }
         const msg = [];
-        let msgItem = args.shift().slice(1);
+        let msgItem = `Poll: ${args.shift().slice(1)}`;
         if (msgItem.endsWith('}')) {
-            msgItem = msgItem.slice(0, -1);
+            msgItem = `Poll: ${msgItem.slice(0, -1)}\n`;
             msg.push(msgItem);
         }
         let inOption = false;
         let optionNum = 0;
 
-        while(args.length) {
+        while(args.length && (msg.length <= emoji.length || !msg.length)) {
             if (args[0].endsWith('}')) {
-                msgItem += " " + args.shift().slice(0, -1);
+                msgItem += ` ${args.shift().slice(0, -1)}\n`;
                 msg.push(msgItem);
             }
             else if (args[0].startsWith('[')) {
@@ -29,13 +29,13 @@ module.exports = {
                     return message.channel.send(`Error: a poll option contains another option`);
                 }
                 if (args[0].endsWith(']')) {
-                    msgItem = "\n" + emoji[optionNum] + " " + args.shift().slice(1, -1);
+                    msgItem = `${emoji[optionNum]} ${args.shift().slice(1, -1)}`;
                     msg.push(msgItem);
                     optionNum++;
                     inOption = false;
                 }
                 else {
-                    msgItem = "\n" + emoji[optionNum] + " " + args.shift().slice(1);
+                    msgItem = `${emoji[optionNum]} ${args.shift().slice(1)}`;
                     inOption = true;
                 }
             }
@@ -43,13 +43,13 @@ module.exports = {
                 if (!inOption) {
                     return message.channel.send(`Error: ended option with ']' without starting with '['`);
                 }
-                msgItem += " " + args.shift().slice(0, -1);
+                msgItem += ` ${args.shift().slice(0, -1)}`;
                 msg.push(msgItem);
                 optionNum++;
                 inOption = false;
             }
             else {
-                msgItem += " " + args.shift();
+                msgItem += ` ${args.shift()}`;
             }
         }
         return message.channel.send(msg).then(sent => {
