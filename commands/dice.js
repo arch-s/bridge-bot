@@ -1,7 +1,3 @@
-function rand(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
 module.exports = {
     name: 'dice',
     aliases: ['dd'],
@@ -33,3 +29,7 @@ module.exports = {
         }
     },
 };
+
+function rand(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+}

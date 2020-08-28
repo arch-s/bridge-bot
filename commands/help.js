@@ -1,4 +1,5 @@
 const {prefix} = require('../config.json');
+const {botID} = require('../private.json');
 
 module.exports = {
     name: 'help',
@@ -19,6 +20,9 @@ module.exports = {
         }
 
         const name = args[0].toLowerCase();
+        if (name == "me") return message.reply("only Jesus can help you now");
+        if (getUserFromMention(name, message.client.users.cache) == botID) return message.reply(`perfection does not need help`);
+        else if (getUserFromMention(name, message.client.users.cache)) return message.channel.send(`${name} do not panic, you are being helped`);
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
         if (!command) {
@@ -33,3 +37,15 @@ module.exports = {
         message.channel.send(data, {split: true});
     }
 };
+
+function getUserFromMention(mention, userCache) {
+	if (!mention) return;
+
+	if (mention.startsWith('<@') && mention.endsWith('>')) {
+		mention = mention.slice(2, -1);
+		if (mention.startsWith('!')) {
+			mention = mention.slice(1);
+		}
+		return userCache.get(mention);
+	}
+}
