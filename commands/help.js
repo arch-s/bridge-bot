@@ -21,10 +21,16 @@ module.exports = {
 
         const name = args[0].toLowerCase();
         if (name == "me") return message.reply("only Jesus can help you now");
-        if (getUserFromMention(name, message.client.users.cache) == botID) return message.reply(`perfection does not need help`);
-        else if (getUserFromMention(name, message.client.users.cache)) return message.channel.send(`${name} do not panic, you are being helped`);
+        switch (getUserFromMention(name, message.client.users.cache).id) {
+            case botID:
+                return message.reply(`perfection does not need help`);
+            case message.author.id:
+                return message.reply("only Jesus can help you now");
+            case true:
+                return message.channel.send(`${name} do not panic, you are being helped`);
+        }
+        
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
-
         if (!command) {
             return message.reply('error: command not found');
         }
