@@ -21,15 +21,18 @@ module.exports = {
 
         const name = args[0].toLowerCase();
         if (name == "me") return message.reply("only Jesus can help you now");
-        switch (getUserFromMention(name, message.client.users.cache).id) {
-            case botID:
-                return message.reply(`perfection does not need help`);
-            case message.author.id:
-                return message.reply("only Jesus can help you now");
-            case true:
-                return message.channel.send(`${name} do not panic, you are being helped`);
+        try {
+            switch (getUserFromMention(name, message.client.users.cache).id) {
+                case botID:
+                    return message.reply(`perfection does not need help`);
+                case message.author.id:
+                    return message.reply("only Jesus can help you now");
+                default:
+                    if (getUserFromMention(name, message.client.users.cache)) return message.channel.send(`${name} do not panic, you are being helped`);
+                    break;
+            }
         }
-        
+        catch (error) {};
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
         if (!command) {
             return message.reply('error: command not found');

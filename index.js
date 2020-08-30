@@ -18,6 +18,14 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
+client.once('reconnecting', () => {
+    console.log('Reconnecting!');
+});
+
+client.once('disconnect', () => {
+    console.log('Disconnect!');
+});
+
 client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
         if (message.author.tag === bruh) {
@@ -36,7 +44,7 @@ client.on('message', message => {
     if (command.args && !args.length) {
         let reply = `No arguments provided`;
         if (command.usage) {
-            reply += `\nThe command format is: \`${prefix}${command.name} ${command.usage}\``;
+            reply += `\nThe command format is: \`${prefix}${command.name} ${command.usage}`;
         }
         return message.channel.send(reply);
     }
