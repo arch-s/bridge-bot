@@ -5,7 +5,7 @@ module.exports = {
     args: true,
     aliases: ['p'],
     description: 'Creates polls for users via reacts',
-    usage: `{poll title} [option 1] [option 2] [option 3]\``,
+    usage: `{poll title} [option 1] [option 2] [option 3]`,
     execute(message, args) {
         if (!args[0].startsWith('{')) {
             return message.channel.send(`Error: poll title is not within {}`);

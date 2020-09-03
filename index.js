@@ -48,6 +48,13 @@ client.on('message', message => {
         }
         return message.channel.send(reply);
     }
+    else if (!command.args && args.length) {
+        let reply = `Command doesn't require arguments`;
+        if (command.usage) {
+            reply += `\nThe command format is: \`${prefix}${command.name} ${command.usage}`;
+        }
+        return message.channel.send(reply);
+    }
 
     try {
         command.execute(message, args);

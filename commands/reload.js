@@ -2,7 +2,7 @@ module.exports = {
     name: 'reload',
     aliases: ['refresh', 'r'],
     description: 'Reloads a command',
-    usage: `command_name\``,
+    usage: `command_name`,
     execute(message, args) {
         if (!args.length) return message.channel.send(`No command passed to reload`);
         const commandName = args[0].toLowerCase();

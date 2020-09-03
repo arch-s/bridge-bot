@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['dd'],
     args: true,
     description: 'rolls virtual dice. great for d&d',
-    usage: `\${number_of_rolls}d\${dice_size}\``,
+    usage: `\${number_of_rolls}d\${dice_size}`,
     execute(message, args) {
         const msg = [];
         let total = 0;
