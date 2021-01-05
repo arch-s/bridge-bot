@@ -4,6 +4,8 @@ const {prefix, day} = require('./config.json');
 const {token, bruh, reaction} = require('./private.json');
 
 const client = new Discord.Client();
+const broadcast = client.voice.createBroadcast();
+module.exports = broadcast;
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -26,7 +28,7 @@ client.once('disconnect', () => {
     console.log('Disconnect!');
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
         if (message.author.tag === bruh) {
             return (Math.random() < 0.01 ? message.react(reaction) : 0);
@@ -48,7 +50,7 @@ client.on('message', message => {
         }
         return message.channel.send(reply);
     }
-    else if (!command.args && args.length) {
+    else if (command.args === false && args.length) {
         let reply = `Command doesn't require arguments`;
         if (command.usage) {
             reply += `\nThe command format is: \`${prefix}${command.name} ${command.usage}`;

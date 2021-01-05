@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['refresh', 'r'],
     description: 'Reloads a command',
     usage: `command_name`,
-    execute(message, args) {
+    async execute(message, args) {
         if (!args.length) return message.channel.send(`No command passed to reload`);
         const commandName = args[0].toLowerCase();
         const command = message.client.commands.get(commandName)

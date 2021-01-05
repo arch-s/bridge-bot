@@ -6,7 +6,7 @@ module.exports = {
     description: 'List all of bridge-bot\'s commands or info about a specific command',
     aliases: ['commands', 'h'],
     usage: `<command_name>\``,
-    execute(message, args) {
+    async execute(message, args) {
         const data = [];
         const {commands} = message.client;
 

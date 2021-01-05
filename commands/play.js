@@ -1,13 +1,23 @@
 const ytdl = require('ytdl-core');
+const {broadcast} = require('../index.js');
 
 module.exports = {
     name: 'play',
-    aliases: ['p'],
-    description: 'play music in voice channels bridge bot is in',
+    aliases: ['pl'],
+    description: 'play music in voice channel you are in',
     args: false,
-    usage: `\``,
+    usage: ``,
     group: 'music',
     execute(message, args) {
-        //TODO: play the music
+        //is user in voice channel
+        if (!message.guild.voiceConnection)
+            {
+                return message.channel.send(`ERROR: cannot play `)
+            }
+
+        //is bride bot already in another channel?
+            // if yes, join broadcast
+
+            // else, join channel
     },
 };

@@ -2,7 +2,7 @@ const ytdl = require('ytdl-core');
 const SpotifyAPI = require('spotify-web-api-node');
 const {spotify_secret, spotify_id, redirect} = require('../private.json');
 const spotify = new SpotifyAPI();
-const queue = new Map();
+const {queue} = require('./queue.js');
 
 module.exports = {
     name: 'add',
