@@ -21,10 +21,6 @@
   "homepage": "https://github.com/arch-s/meeting-bot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
-    "discord.js": "^12.2.0",
-    "ffmpeg": "0.0.4",
-    "fluent-ffmpeg": "^2.1.2",
-    "spotify-web-api-node": "^4.0.0",
-    "ytdl-core": "^3.2.2"
+    "discord.js": "^12.2.0"
   }
 }
