@@ -60,7 +60,7 @@ module.exports = {
         if (!dice) return message.channel.send(`Error: argument not formatted correctly.` + 
                                                 ` Use \`{number_of_rolls}d{dice_size}\``);
         if (rolls > 1000) return message.channel.send(`Error: stop playing QA`);
-        if (rolls == 1) msg.push(`${message.author.username} rolling d${dice}:`)
+        if (rolls == 1) msg.push(`rolling d${dice}:`)
         else msg.push(` rolling d${dice} ${rolls} times${advantage_msg}:`)
 
         for (let i = 0; i < rolls; i++) {
