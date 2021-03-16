@@ -1,14 +1,19 @@
 {
-  "name": "meeting-bot",
+  "name": "bridge-bot",
   "version": "1.0.0",
-  "description": "discord bot for polling weeklt meeting times",
+  "description": "discord bot for bridge crew",
   "main": "index.js",
   "scripts": {
-    "test": "meetbot"
+    "test": "birdge-bot",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "12.x",
+    "npm": "*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arch-s/meeting-bot.git"
+    "url": "git+https://github.com/arch-s/bridge-bot.git"
   },
   "keywords": [
     "discord"
@@ -16,11 +21,12 @@
   "author": "arch-s",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arch-s/meeting-bot/issues"
+    "url": "https://github.com/arch-s/bridge-bot/issues"
   },
-  "homepage": "https://github.com/arch-s/meeting-bot#readme",
+  "homepage": "https://github.com/arch-s/bridge-bot#readme",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
-    "discord.js": "^12.2.0"
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
   }
 }

@@ -1,11 +1,9 @@
+require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
 const {prefix, day} = require('./config.json');
-const {token, bruh, reaction} = require('./private.json');
 
 const client = new Discord.Client();
-const broadcast = client.voice.createBroadcast();
-module.exports = broadcast;
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -14,7 +12,9 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command)
 }
 
-const cooldowns = new Discord.Collection();
+const token = process.env.TOKEN; 
+const bruh = process.env.BRUH;
+const reaction = process.env.REACTION;
 
 client.once('ready', () => {
 	console.log('Ready!');

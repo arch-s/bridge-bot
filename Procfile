@@ -1,1 +1,2 @@
-worker: npm start .
+worker: npm start
+web: echo "I don't want a web process"
