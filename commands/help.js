@@ -1,5 +1,5 @@
-const {prefix} = require('../config.json');
-const {botID} = require('../private.json');
+//const {prefix} = require('../config.json');
+//const {botID} = require('../private.json');
 
 module.exports = {
     name: 'help',

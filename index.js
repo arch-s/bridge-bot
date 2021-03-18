@@ -15,6 +15,7 @@ for (const file of commandFiles) {
 const token = process.env.TOKEN; 
 const bruh = process.env.BRUH;
 const reaction = process.env.REACTION;
+const botID = process.env.BOT_ID;
 
 client.once('ready', () => {
 	console.log('Ready!');
