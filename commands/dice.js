@@ -5,6 +5,7 @@ module.exports = {
     description: 'rolls virtual dice. great for d&d. use \'a\' to roll with advantage and \'d\' for disadvantage',
     usage: `{number_of_rolls}d{dice_size} +/-{modifier} a/d`,
     async execute(message, args) {
+        message.delete();
         const msg = [];
         let vals = [];
         let total = 0;

@@ -63,7 +63,6 @@ client.on('message', async message => {
 
     try {
         command.execute(message, args);
-        message.delete();
     }
     catch (error) {
         console.error(error);
