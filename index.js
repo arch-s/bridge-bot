@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
 const {prefix, day} = require('./config.json');
+exports.prefix = prefix;
 
 const client = new Discord.Client();
 
@@ -16,6 +17,7 @@ const token = process.env.TOKEN;
 const bruh = process.env.BRUH;
 const reaction = process.env.REACTION;
 const botID = process.env.BOT_ID;
+exports.botID = botID;
 
 client.once('ready', () => {
 	console.log('Ready!');

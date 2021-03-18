@@ -1,5 +1,6 @@
-//const {prefix} = require('../config.json');
-//const {botID} = require('../private.json');
+const index = require('../index');
+const prefix = index.prefix;
+const botID = index.botID;
 
 module.exports = {
     name: 'help',
