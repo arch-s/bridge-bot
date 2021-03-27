@@ -18,9 +18,10 @@ const bruh = process.env.BRUH;
 const reaction = process.env.REACTION;
 const botID = process.env.BOT_ID;
 const jailID = process.env.JAIL_ID;
+const jail = client.channels.fetch(jailID);
 exports.botID = botID;
 exports.jailID = jailID;
-exports.client = client;
+exports.jail = jail;
 
 client.once('ready', () => {
 	console.log('Ready!');
