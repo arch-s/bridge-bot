@@ -17,7 +17,10 @@ const token = process.env.TOKEN;
 const bruh = process.env.BRUH;
 const reaction = process.env.REACTION;
 const botID = process.env.BOT_ID;
+const jailID = process.env.JAIL_ID;
 exports.botID = botID;
+exports.jailID = jailID;
+exports.client = client;
 
 client.once('ready', () => {
 	console.log('Ready!');
@@ -34,7 +37,7 @@ client.once('disconnect', () => {
 client.on('message', async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
         if (message.author.tag === bruh) {
-            return (Math.random() < 0.01 ? message.react(reaction) : 0);
+            return (Math.random() < 0.002 ? message.react(reaction) : 0);
         }
         return;
     }
